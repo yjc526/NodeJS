@@ -38,10 +38,10 @@ router.post('/', function (req, res, next) {
                                 return console.error(err.message);
                             }
                             console.log("DB연결됨");
-                            const sql = `update certchain_account set password='${req.body.new_pw1}' where email='${req.session.email}'`;
+                            const sql = `update certchain_account set password=? where email=?`;
                             console.log(sql);
 
-                            conn2.query(sql, (err, result, fields) => {
+                            conn2.query(sql, [req.body.new_pw1, req.session.email], (err, result, fields) => {
                                 if (err) {
                                     console.error(err.message);
                                 } else {

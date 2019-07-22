@@ -15,10 +15,10 @@ router.post('/', function (req, res, next) {
             return console.error(err.message);
         }
         console.log("DB연결됨");
-        const sql = `delete from certchain_account where email='${req.session.email}'`;
+        const sql = `delete from certchain_account where email = ?`;
         console.log(sql);
 
-        conn.query(sql, (err, result, fields) => {
+        conn.query(sql, [req.session.email], (err, result, fields) => {
             if (err) {
                 console.error(err.message);
                 const msg = { msg: "정상적으로 처리되지 않았습니다. 계속 반복된다면 고객센터에 문의주세요." };

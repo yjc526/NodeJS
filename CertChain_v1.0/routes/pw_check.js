@@ -17,10 +17,10 @@ router.post('/', function (req, res, next) {
             return console.error(err.message);
         }
         console.log("DB연결됨");
-        const sql = `select password from certchain_account where email='${req.session.email}'`;
+        const sql = `select password from certchain_account where email=?`;
         console.log(sql);
 
-        conn.query(sql, (err, result, fields) => {
+            conn.query(sql, [req.session.email], (err, result, fields) => {
             if (err) {
                 console.error(err.message);
             } else {

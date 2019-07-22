@@ -250,8 +250,8 @@ $(document).ready(function () {
                     "<p>이름 : " + parsedData[0].name + "</p>" +
                     "<p>이메일 : " + parsedData[0].email + "</p>" +
                     "<h4 class='widget-title mb-30'>조회한 키 값이 보유한 문서 목록</h4>";
-
-                for (x in parsedData) {
+                
+                for (x in parsedData[1]) {
                     result +=
                         "<div class='single-recent-post d-flex' >" +
                         "<!-- Thumb -->" +
